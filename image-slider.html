@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Image Slider </title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <style>
+        .images-box {
+            width: 600px;
+            height: 400px;
+            position: relative;
+            margin: 10px auto;
+            /* overflow: hidden; */
+        }
+
+        .img {
+            width: 100%;
+            height: 100%;
+            display: none;
+            /* position: absolute; 
+            top: 0;
+            left: 0; */
+        }
+
+        /* 
+        .active {
+            display: block;
+        } */
+
+        .next {
+            width: 50px;
+            position: absolute;
+            top: 50%;
+            right: 0%;
+            border-radius: 50%;
+        }
+
+        .pre {
+            width: 50px;
+            position: absolute;
+            top: 50%;
+            left: 0px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body class="bg-dark text-light">
+    <h4 class="text-center mt-4 ">Image Slider</h4>
+    <div class="images-box border border-3 ">
+        <img src="https://plus.unsplash.com/premium_photo-1721084910236-6e4b00772bc2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDh8fHxlbnwwfHx8fHw%3D"
+            alt="images" class="img img1">
+        <img src="https://plus.unsplash.com/premium_photo-1720649610188-3dfa0defde94?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDh8fHxlbnwwfHx8fHw%3D"
+            alt="images" class="img img2">
+        <img src="https://images.unsplash.com/photo-1686814951605-079198148fd4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDIwfHx8ZW58MHx8fHx8"
+            alt="images" class="img img3 ">
+
+        <!-- btns -->
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeRCo6_kZI2oR4Ydx084dmzcdSB5k5OsJr0A8Zu92dAHdN16Db862lh-99dhULQ75GbNM&usqp=CAU"
+            alt="" class="next " onclick="controller(-1)">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOTy8xlujvF3vhv2TpvaFcrtlmo0aXq2RfMA&s" alt=""
+            class="pre" onclick="controller(1)">
+        <span class="d-block text-center pt-3 ">Created By Usman Ghani </span>
+    </div>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+    <script>
+        let flag = 0
+
+        function controller(x) {
+            flag = flag + (x)
+            slideShow(flag)
+        }
+
+        slideShow(flag)
+
+        function slideShow(num) {
+
+            let slides = document.querySelectorAll('.img'); // array of all images 
+
+            if (num == slides.length) {
+                flag = 0
+                num = 0
+            }
+            if (num < 0) {
+                flag = slides.length - 1
+                num = slides.length - 1
+            }
+
+            for (let y of slides) {
+                y.style.display = 'none'
+            }
+
+            slides[num].style.display = "block"
+        }
+
+    </script>
+</body>
+
+</html>
